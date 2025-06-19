@@ -24,7 +24,7 @@ Page({
 		if (!AdminBiz.isAdmin(this)) return;
 		pageHelper.getOptions(this, options);
 
-		this.setData(await AdminMeetBiz.initFormData()); // 初始化表单数据   
+		this.setData(await AdminMeetBiz.initFormData()); // 初始化表单数据
 
 		await this._loadDetail();
 
@@ -56,7 +56,7 @@ Page({
 			isLoad: true,
 
 
-			// 表单数据   
+			// 表单数据
 			formTitle: meet.MEET_TITLE,
 			formTypeId: meet.MEET_TYPE_ID,
 			formContent: meet.MEET_CONTENT,
@@ -144,7 +144,7 @@ Page({
 		data.typeName = AdminMeetBiz.getTypeName(data.typeId);
 
 		try {
-			// 先创建，再上传 
+			// 先创建，再上传
 			let result = await cloudHelper.callCloudSumbit('admin/meet_insert', data);
 			let meetId = result.data.id;
 
@@ -207,7 +207,7 @@ Page({
 			let meetId = this.data.id;
 			data.id = meetId;
 
-			// 先修改，再上传 
+			// 先修改，再上传
 			await cloudHelper.callCloudSumbit('admin/meet_edit', data);
 
 			// 富文本 提交处理
@@ -228,7 +228,7 @@ Page({
 			if (!await AdminMeetBiz.updateMeetStyleSet(meetId, formStyleSet, this)) return;
 
 
-			let callback = async function () { 
+			let callback = async function () {
 				// 更新列表页面数据
 				let node = {
 					'MEET_TITLE': data.title,

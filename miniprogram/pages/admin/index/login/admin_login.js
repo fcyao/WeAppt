@@ -1,5 +1,5 @@
-const AdminBiz = require('../../../../biz/admin_biz.js'); 
-const pageHelper = require('../../../../helper/page_helper.js'); 
+const AdminBiz = require('../../../../biz/admin_biz.js');
+const pageHelper = require('../../../../helper/page_helper.js');
 const PassportBiz = require('../../../../biz/passport_biz.js');
 
 Page({
@@ -8,8 +8,8 @@ Page({
 	 * 页面的初始数据
 	 */
 	data: {
-		name: '',
-		pwd: '',
+		name: 'admin',
+		pwd: '123456',
 	},
 
 	/**

@@ -1,7 +1,7 @@
 /**
  * Notes: 预约后台管理
  * Ver : CCMiniCloud Framework 2.0.1 ALL RIGHTS RESERVED BY www.code3721.com
- * Date: 2021-12-08 07:48:00 
+ * Date: 2021-12-08 07:48:00
  */
 
 const BaseAdminService = require('./base_admin_service.js');
@@ -16,6 +16,7 @@ const MeetModel = require('../../model/meet_model.js');
 const JoinModel = require('../../model/join_model.js');
 const DayModel = require('../../model/day_model.js');
 const config = require('../../../config/config.js');
+const UserModel = require("../../model/user_model");
 
 class AdminMeetService extends BaseAdminService {
 
@@ -140,9 +141,21 @@ class AdminMeetService extends BaseAdminService {
 		meetId,
 		content // 富文本数组
 	}) {
+		let where = {
+			_id: meetId
+		};
+		// 判断是否存在
+		let cnt = await MeetModel.count(where);
+		if (cnt == 0) {
+			this.AppError('数据不存在');
+			return;
+		}
 
-		this.AppError('此功能暂不开放，如有需要请加作者微信：cclinux0730');
+		let data = {
+			MEET_CONTENT: content
+		};
 
+		return await MeetModel.edit(where, data);
 	}
 
 	/**
@@ -153,8 +166,21 @@ class AdminMeetService extends BaseAdminService {
 		meetId,
 		styleSet
 	}) {
+		let where = {
+			_id: meetId
+		};
+		// 判断是否存在
+		let cnt = await MeetModel.count(where);
+		if (cnt == 0) {
+			this.AppError('数据不存在');
+			return;
+		}
 
-		this.AppError('此功能暂不开放，如有需要请加作者微信：cclinux0730');
+		let data = {
+			MEET_STYLE_SET: styleSet
+		};
+
+		return await MeetModel.edit(where, data);
 
 	}
 
@@ -174,7 +200,36 @@ class AdminMeetService extends BaseAdminService {
 		isShowLimit,
 		formSet
 	}) {
-		this.AppError('此功能暂不开放，如有需要请加作者微信：cclinux0730');
+
+		let where = {
+			_id: id
+		};
+		// 判断是否存在
+		let cnt = await MeetModel.count(where);
+		if (cnt == 0) {
+			this.AppError('数据不存在');
+			return;
+		}
+
+		let data = {
+			MEET_TITLE: title,
+			MEET_TYPE_ID: typeId,
+			MEET_TYPE_NAME: typeName,
+			MEET_ORDER: order,
+			MEET_DAYS: daysSet,
+			MEET_IS_SHOW_LIMIT: isShowLimit,
+			MEET_FORM_SET: formSet,
+		};
+
+		await MeetModel.edit(where, data);
+		const dayWhere = {
+			DAY_MEET_ID: id,
+		}
+		await DayModel.del(dayWhere)
+		daysSet.map(v => {
+			v.DAY_MEET_ID = id;
+		})
+		return await DayModel.insertBatch(daysSet)
 
 	}
 
@@ -290,8 +345,8 @@ class AdminMeetService extends BaseAdminService {
 
 	}
 
-	/**修改报名状态 
-	 * 特殊约定 99=>正常取消 
+	/**修改报名状态
+	 * 特殊约定 99=>正常取消
 	 */
 	async statusJoin(admin, joinId, status, reason = '') {
 		this.AppError('此功能暂不开放，如有需要请加作者微信：cclinux0730');
