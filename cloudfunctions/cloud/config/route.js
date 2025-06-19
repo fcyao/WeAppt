@@ -4,7 +4,7 @@
  * Date: 2020-10-14 07:00:00
  */
 
-module.exports = { 
+module.exports = {
 	'home/setup_all': 'home_controller@getSetupAll', //获取全局配置(所有)
 
 	'passport/phone': 'passport_controller@getPhone',
@@ -13,7 +13,7 @@ module.exports = {
 
 	'news/list': 'news_controller@getNewsList',
 	'news/home_list': 'news_controller@getHomeNewsList',
-	'news/view': 'news_controller@viewNews', 
+	'news/view': 'news_controller@viewNews',
 
 	'meet/list': 'meet_controller@getMeetList',
 	'meet/list_by_day': 'meet_controller@getMeetListByDay',
@@ -27,19 +27,19 @@ module.exports = {
 	'my/my_join_cancel': 'meet_controller@cancelMyJoin',
 	'my/my_join_detail': 'meet_controller@getMyJoinDetail',
 	'my/my_join_someday': 'meet_controller@getMyJoinSomeday',
-	'my/my_join_checkin': 'meet_controller@userSelfCheckin', 
+	'my/my_join_checkin': 'meet_controller@userSelfCheckin',
 
 	'test/test': 'test/test_controller@test',
 	'test/meet_test_join': 'test/test_meet_controller@testJoin',
 
-	//***########### ADMIN ################## */  
+	//***########### ADMIN ################## */
 	'admin/login': 'admin/admin_home_controller@adminLogin',
 	'admin/home': 'admin/admin_home_controller@adminHome',
 	'admin/clear_cache': 'admin/admin_home_controller@clearCache#noDemo',
 
-	'admin/setup_about': 'admin/admin_setup_controller@setupAbout#noDemo',
-	'admin/setup_contact': 'admin/admin_setup_controller@setupContact#noDemo', 
-	'admin/setup_qr': 'admin/admin_setup_controller@genMiniQr', 
+	'admin/setup_about': 'admin/admin_setup_controller@setupAbout',
+	'admin/setup_contact': 'admin/admin_setup_controller@setupContact',
+	'admin/setup_qr': 'admin/admin_setup_controller@genMiniQr',
 
 	'admin/news_list': 'admin/admin_news_controller@getNewsList',
 	'admin/news_insert': 'admin/admin_news_controller@insertNews#noDemo',
@@ -47,7 +47,7 @@ module.exports = {
 	'admin/news_edit': 'admin/admin_news_controller@editNews#noDemo',
 	'admin/news_update_pic': 'admin/admin_news_controller@updateNewsPic#noDemo',
 	'admin/news_update_content': 'admin/admin_news_controller@updateNewsContent#noDemo',
-	'admin/news_del': 'admin/admin_news_controller@delNews#noDemo', 
+	'admin/news_del': 'admin/admin_news_controller@delNews#noDemo',
 	'admin/news_sort': 'admin/admin_news_controller@sortNews#noDemo',
 	'admin/news_status': 'admin/admin_news_controller@statusNews#noDemo',
 
@@ -76,13 +76,13 @@ module.exports = {
 	'admin/temp_insert': 'admin/admin_meet_controller@insertTemp#noDemo',
 	'admin/temp_list': 'admin/admin_meet_controller@getTempList',
 	'admin/temp_del': 'admin/admin_meet_controller@delTemp#noDemo',
-	'admin/temp_edit': 'admin/admin_meet_controller@editTemp#noDemo', 
+	'admin/temp_edit': 'admin/admin_meet_controller@editTemp#noDemo',
 
 	'admin/log_list': 'admin/admin_mgr_controller@getLogList',
 
 	'admin/user_list': 'admin/admin_user_controller@getUserList',
 	'admin/user_detail': 'admin/admin_user_controller@getUserDetail',
-	'admin/user_del': 'admin/admin_user_controller@delUser#noDemo',  
+	'admin/user_del': 'admin/admin_user_controller@delUser#noDemo',
 
 	'admin/user_data_get': 'admin/admin_export_controller@userDataGet',
 	'admin/user_data_export': 'admin/admin_export_controller@userDataExport',

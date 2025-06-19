@@ -1,7 +1,7 @@
 /**
  * Notes: 设置管理
  * Ver : CCMiniCloud Framework 2.0.1 ALL RIGHTS RESERVED BY cclinux@qq.com
- * Date: 2021-07-11 07:48:00 
+ * Date: 2021-07-11 07:48:00
  */
 
 const BaseAdminService = require('./base_admin_service.js');
@@ -18,8 +18,21 @@ class AdminSetupService extends BaseAdminService {
 		about,
 		aboutPic
 	}) {
+		const _setup = await SetupModel.getOne( {});
 
-		this.AppError('此功能暂不开放，如有需要请加作者微信：cclinux0730');
+		if(!_setup) {
+			return SetupModel.insert({
+				"SETUP_ABOUT": about,
+				"SETUP_ABOUT_PIC": aboutPic
+			});
+		} else {
+			return SetupModel.edit({
+				_id: _setup._id
+			}, {
+				"SETUP_ABOUT": about,
+				"SETUP_ABOUT_PIC": aboutPic
+			});
+		}
 	}
 
 	/** 联系我们设置 */
@@ -29,8 +42,25 @@ class AdminSetupService extends BaseAdminService {
 		officePic,
 		servicePic,
 	}) {
+		const _setup = await SetupModel.getOne( {});
 
-		this.AppError('此功能暂不开放，如有需要请加作者微信：cclinux0730');
+		if(!_setup) {
+			return SetupModel.insert({
+				"SETUP_ADDRESS": address,
+				"SETUP_PHONE": phone,
+				"SETUP_OFFICE_PIC": officePic,
+				"SETUP_SERVICE_PIC": servicePic,
+			});
+		} else {
+			return SetupModel.edit({
+				_id: _setup._id
+			}, {
+				"SETUP_ADDRESS": address,
+				"SETUP_PHONE": phone,
+				"SETUP_OFFICE_PIC": officePic,
+				"SETUP_SERVICE_PIC": servicePic,
+			});
+		}
 	}
 
 	/** 小程序码 */
