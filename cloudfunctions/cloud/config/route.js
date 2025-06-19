@@ -35,14 +35,14 @@ module.exports = {
 	//***########### ADMIN ################## */
 	'admin/login': 'admin/admin_home_controller@adminLogin',
 	'admin/home': 'admin/admin_home_controller@adminHome',
-	'admin/clear_cache': 'admin/admin_home_controller@clearCache#noDemo',
+	'admin/clear_cache': 'admin/admin_home_controller@clearCache',
 
 	'admin/setup_about': 'admin/admin_setup_controller@setupAbout',
 	'admin/setup_contact': 'admin/admin_setup_controller@setupContact',
 	'admin/setup_qr': 'admin/admin_setup_controller@genMiniQr',
 
 	'admin/news_list': 'admin/admin_news_controller@getNewsList',
-	'admin/news_insert': 'admin/admin_news_controller@insertNews#noDemo',
+	'admin/news_insert': 'admin/admin_news_controller@insertNews',
 	'admin/news_detail': 'admin/admin_news_controller@getNewsDetail',
 	'admin/news_edit': 'admin/admin_news_controller@editNews#noDemo',
 	'admin/news_update_pic': 'admin/admin_news_controller@updateNewsPic#noDemo',

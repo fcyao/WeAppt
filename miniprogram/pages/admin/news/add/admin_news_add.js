@@ -64,7 +64,7 @@ Page({
 		pageHelper.model(this, e);
 	},
 
-	/** 
+	/**
 	 * 数据提交
 	 */
 	bindFormSubmit: async function () {
@@ -93,11 +93,11 @@ Page({
 			// 提取简介
 			data.desc = AdminNewsBiz.getDesc(data.desc, this.data.formContent);
 
-			// 先创建，再上传 
+			// 先创建，再上传
 			let result = await cloudHelper.callCloudSumbit('admin/news_insert', data);
-			let newsId = result.data.id;
+			let newsId = result.data;
 
-			// 图片 提交处理 
+			// 图片 提交处理
 			wx.showLoading({
 				title: '提交中...',
 				mask: true

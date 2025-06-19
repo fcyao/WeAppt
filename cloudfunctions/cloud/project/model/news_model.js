@@ -1,7 +1,7 @@
 /**
  * Notes: 资讯实体
  * Ver : CCMiniCloud Framework 2.0.1 ALL RIGHTS RESERVED BY cclinux@qq.com
- * Date: 2020-10-28 19:20:00 
+ * Date: 2020-10-28 19:20:00
  */
 
 
@@ -16,7 +16,7 @@ NewsModel.CL = "ax_news";
 
 NewsModel.DB_STRUCTURE = {
 	_pid: 'string|true',
-	NEWS_ID: 'string|true',
+	NEWS_ID: 'string|false',
 	NEWS_ADMIN_ID: 'string|true',
 
 	NEWS_TYPE: 'int|true|default=0|comment=类型 0=本地文章，1=外部链接',

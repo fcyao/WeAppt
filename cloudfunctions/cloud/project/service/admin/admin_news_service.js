@@ -1,7 +1,7 @@
 /**
  * Notes: 资讯后台管理
  * Ver : CCMiniCloud Framework 2.0.1 ALL RIGHTS RESERVED BY cclinux@qq.com
- * Date: 2021-07-11 07:48:00 
+ * Date: 2021-07-11 07:48:00
  */
 
 const BaseAdminService = require('./base_admin_service.js');
@@ -20,12 +20,21 @@ class AdminNewsService extends BaseAdminService {
 		cateId, //分类
 		cateName,
 		order,
-		type = 0, //类型 
+		type = 0, //类型
 		desc = '',
 		url = '', //外部链接
 
 	}) {
-		this.AppError('此功能暂不开放，如有需要请加作者微信：cclinux0730');
+		return NewsModel.insert({
+			"NEWS_ADMIN_ID": "1",
+			"NEWS_TITLE": title,
+			"NEWS_CATE_ID": cateId,
+			"NEWS_CATE_NAME": cateName,
+			"NEWS_ORDER": order,
+			"NEWS_TYPE": type,
+			"NEWS_DESC": desc,
+			"NEWS_URL": url,
+		});
 	}
 
 	/**删除资讯数据 */
@@ -54,8 +63,12 @@ class AdminNewsService extends BaseAdminService {
 		newsId,
 		content // 富文本数组
 	}) {
-
-		this.AppError('此功能暂不开放，如有需要请加作者微信：cclinux0730');
+		let where = {
+			_id: newsId
+		}
+		return NewsModel.edit(where, {
+			NEWS_CONTENT: content
+		});
 
 	}
 
@@ -67,9 +80,12 @@ class AdminNewsService extends BaseAdminService {
 		newsId,
 		imgList // 图片数组
 	}) {
-
-		this.AppError('此功能暂不开放，如有需要请加作者微信：cclinux0730');
-
+		let where = {
+			_id: newsId
+		}
+		return NewsModel.edit(where, {
+			NEWS_PIC: imgList
+		})
 	}
 
 
@@ -80,12 +96,21 @@ class AdminNewsService extends BaseAdminService {
 		cateId, //分类
 		cateName,
 		order,
-		type = 0, //类型 
+		type = 0, //类型
 		desc = '',
 		url = '', //外部链接
 	}) {
 
-		this.AppError('此功能暂不开放，如有需要请加作者微信：cclinux0730');
+		return NewsModel.edit({_id: id},{
+			"NEWS_ADMIN_ID": "1",
+			"NEWS_TITLE": title,
+			"NEWS_CATE_ID": cateId,
+			"NEWS_CATE_NAME": cateName,
+			"NEWS_ORDER": order,
+			"NEWS_TYPE": type,
+			"NEWS_DESC": desc,
+			"NEWS_URL": url,
+		});
 	}
 
 	/**取得资讯分页列表 */
