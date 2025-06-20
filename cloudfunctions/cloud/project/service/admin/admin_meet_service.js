@@ -60,7 +60,13 @@ class AdminMeetService extends BaseAdminService {
 
 	/** 管理员按钮核销 */
 	async checkinJoin(joinId, flag) {
-		this.AppError('此功能暂不开放，如有需要请加作者微信：cclinux0730');
+		let where = {
+			_id: joinId
+		}
+		let data = {
+			JOIN_IS_CHECKIN: flag
+		}
+		return await JoinModel.edit(where, data);
 	}
 
 	/** 管理员扫码核销 */

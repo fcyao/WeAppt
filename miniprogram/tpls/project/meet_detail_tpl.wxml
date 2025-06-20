@@ -15,17 +15,15 @@
 		<view class="big-box">
 			<block wx:if="{{showMind}}">
 				<view class="article-box padding-project">
-				 
+
 					<view class="article card-project shadow-project margin-top" wx:if="{{meet.MEET_CONTENT && meet.MEET_CONTENT.length>0}}">
 						<block wx:for="{{meet.MEET_CONTENT}}" wx:key="key">
 							<view class="content" wx:if="{{item.type=='text'}}">
 								<text user-select="{{true}}">{{item.val}}</text>
 							</view>
 
-							<view class="pics" wx:if="{{item.type=='img'}}">
-								<image bindtap="url" data-type='img' data-url="{{item.val}}" show-menu-by-longpress="{{true}}" class="loading" mode='widthFix' lazy-load="true" src="{{item.val}}">
-								</image>
-							</view>
+                            <image wx:if="{{item.type=='img'}}" bindtap="url" data-type='img' data-url="{{item.val}}" show-menu-by-longpress="{{true}}" mode='widthFix' lazy-load="true" src="{{item.val}}">
+                            </image>
 						</block>
 					</view>
 				</view>

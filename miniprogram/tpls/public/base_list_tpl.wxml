@@ -32,7 +32,7 @@
 				<view class="desc">
 					<image class="pic loading" lazy-load="{{true}}" mode="aspectFill" src="{{item.pic}}">
 					</image>
-					<text class="content-cut-three">{{item.desc}}</text> 
+					<text class="content-cut-three">{{item.desc}}</text>
 				</view>
 				<view class="data">
 					<text class="margin-right">{{item.ext}}</text>

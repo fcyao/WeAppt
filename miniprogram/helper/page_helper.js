@@ -22,7 +22,7 @@
 		MENU_ITEM: ['首页', '预约日历', '我的'], // 第1,4,5菜单
 
 		NEWS_CATE: '1=最新动态,2=中医知识',
-		MEET_TYPE: '1=医师预约,2=项目预约',
+		MEET_TYPE: '1=医师预约,2=活动预约',
 
 		DEFAULT_FORMS: [{
 				type: 'line',
