@@ -1,5 +1,5 @@
 module.exports = {
-	PID: 'A00', // 牙科
+	PID: 'A00', // 中医
 
 	NAV_COLOR: '#ffffff',
 	NAV_BG: '#2858DF',
@@ -7,8 +7,8 @@ module.exports = {
 	MEET_NAME: '预约',
 
 	MENU_ITEM: ['首页', '预约日历', '我的'], // 第1,4,5菜单
- 
-	NEWS_CATE: '1=最新动态,2=牙科知识',
+
+	NEWS_CATE: '1=最新动态,2=中医知识',
 	MEET_TYPE: '1=医师预约,2=项目预约',
 
 	DEFAULT_FORMS: [{

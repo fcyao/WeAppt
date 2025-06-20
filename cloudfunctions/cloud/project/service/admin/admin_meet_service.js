@@ -108,13 +108,30 @@ class AdminMeetService extends BaseAdminService {
 		isShowLimit,
 		formSet,
 	}) {
+		const resp = await MeetModel.insert({
+			MEET_TITLE: title,
+			MEET_ORDER: order,
+			MEET_TYPE_ID: typeId,
+			MEET_TYPE_NAME: typeName,
+			MEET_DAYS: daysSet,
+			MEET_IS_SHOW_LIMIT: isShowLimit,
+			MEET_FORM_SET: formSet,
+			MEET_ADMIN_ID: "1"
+		})
+		daysSet.map(v => {
+			v.DAY_MEET_ID = resp;
+		});
+		await DayModel.insertBatch(daysSet);
+		return resp;
 
-		this.AppError('此功能暂不开放，如有需要请加作者微信：cclinux0730');
 	}
 
 	/**删除数据 */
 	async delMeet(id) {
-		this.AppError('此功能暂不开放，如有需要请加作者微信：cclinux0730');
+		let where = {
+			_id: id
+		};
+		return await MeetModel.del(where);
 	}
 
 	/**获取信息 */
@@ -182,11 +199,6 @@ class AdminMeetService extends BaseAdminService {
 
 		return await MeetModel.edit(where, data);
 
-	}
-
-	/** 更新日期设置 */
-	async _editDays(meetId, nowDay, daysSetData) {
-		this.AppError('此功能暂不开放，如有需要请加作者微信：cclinux0730');
 	}
 
 	/**更新数据 */
@@ -341,25 +353,43 @@ class AdminMeetService extends BaseAdminService {
 
 	/** 删除 */
 	async delJoin(joinId) {
-		this.AppError('此功能暂不开放，如有需要请加作者微信：cclinux0730');
-
+		let where = {
+			_id: joinId
+		};
+		return await JoinModel.del(where);
 	}
 
 	/**修改报名状态
 	 * 特殊约定 99=>正常取消
 	 */
 	async statusJoin(admin, joinId, status, reason = '') {
-		this.AppError('此功能暂不开放，如有需要请加作者微信：cclinux0730');
+		let where = {
+			_id: joinId
+		};
+		return await JoinModel.edit(where, {
+			JOIN_STATUS: status,
+			JOIN_REASON: reason
+		})
 	}
 
 	/**修改项目状态 */
 	async statusMeet(id, status) {
-		this.AppError('此功能暂不开放，如有需要请加作者微信：cclinux0730');
+		let where = {
+			_id: id
+		}
+		return MeetModel.edit(where, {
+			MEET_STATUS: status
+		});
 	}
 
 	/**置顶排序设定 */
 	async sortMeet(id, sort) {
-		this.AppError('此功能暂不开放，如有需要请加作者微信：cclinux0730');
+		let where = {
+			_id: id
+		}
+		return MeetModel.edit(where, {
+			MEET_ORDER: sort
+		});
 	}
 }
 

@@ -1,7 +1,7 @@
 /**
  * Notes: 预约后台管理
  * Ver : CCMiniCloud Framework 2.0.1 ALL RIGHTS RESERVED BY cclinux@qq.com
- * Date: 2021-12-08 07:48:00 
+ * Date: 2021-12-08 07:48:00
  */
 
 const BaseAdminService = require('./base_admin_service.js');
@@ -29,7 +29,10 @@ class AdminTempService extends BaseAdminService {
 
 	/**删除数据 */
 	async delTemp(id) {
-		this.AppError('此功能暂不开放，如有需要请加作者微信：cclinux0730');
+		let where = {
+			_id: id
+		};
+		return await TempModel.del(where);
 	}
 
 

@@ -1,7 +1,7 @@
  /**
   * Notes: 通用页面操作类库
   * Ver : CCMiniCloud Framework 2.0.1 ALL RIGHTS RESERVED BY cclinux@qq.com
-  * Date: 2020-11-14 07:48:00 
+  * Date: 2020-11-14 07:48:00
   */
 
  const helper = require('./helper.js');
@@ -12,18 +12,18 @@
 
  function getSkin() {
  	return  {
-		PID: 'A00', // 牙科
-	
+		PID: 'A00', // 中医
+
 		NAV_COLOR: '#ffffff',
 		NAV_BG: '#2858DF',
-	
+
 		MEET_NAME: '预约',
-	
+
 		MENU_ITEM: ['首页', '预约日历', '我的'], // 第1,4,5菜单
-	 
-		NEWS_CATE: '1=最新动态,2=牙科知识',
+
+		NEWS_CATE: '1=最新动态,2=中医知识',
 		MEET_TYPE: '1=医师预约,2=项目预约',
-	
+
 		DEFAULT_FORMS: [{
 				type: 'line',
 				title: '姓名',
@@ -105,7 +105,7 @@
   */
  function getPrevPage(deep = 2) {
  	let pages = getCurrentPages();
- 	let prevPage = pages[pages.length - deep]; //上一个页面 
+ 	let prevPage = pages[pages.length - deep]; //上一个页面
  	return prevPage;
  }
 
@@ -113,7 +113,7 @@
   * 修改当前/父页面的某个列表节点
   * @param {*} id 主键
   * @param {*} valName 被修改的字段名
-  * @param {*} val  被修改的值 
+  * @param {*} val  被修改的值
   * @param {*} list   数据集
   * @param {*} idName 主键名
   */
@@ -181,9 +181,9 @@
 
  /**
   * 从记录数组里删除某个节点
-  * @param {*} id 
-  * @param {*} list 
-  * @param {*} idName 
+  * @param {*} id
+  * @param {*} list
+  * @param {*} idName
   */
  function delListNode(id, list, idName = '_id') {
  	if (!list || !Array.isArray(list)) return false;
@@ -249,7 +249,7 @@
 
  /**
   * 选择图片
-  * @param {*} that 
+  * @param {*} that
   * @param {*} max  最大上传上限
   * @param {*} imgListName  图片数组名
   */
@@ -268,7 +268,7 @@
 
  /**
   * 删除图片
-  * @param {*} that 
+  * @param {*} that
   * @param {*} idx  被删除图片索引
   * @param {*} imgListName  图片数组名
   */
@@ -284,8 +284,8 @@
 
  /**
   * 图片预览
-  * @param {*} that 
-  * @param {*} url 
+  * @param {*} that
+  * @param {*} url
   * @param {*} imgListName  图片数组名
   */
  function previewImage(that, url, imgListName = 'imgList') {
@@ -298,8 +298,8 @@
 
  /**
   * 取得data-数据 去掉驼峰式命名，改成纯小写式命名
-  * @param {*} e 
-  * @param {*} name 
+  * @param {*} e
+  * @param {*} name
   * @param {*} child  是否获取穿透子元素的data-
   */
  function dataset(e, name, child = false) {
@@ -309,7 +309,7 @@
  		return e.target.dataset[name];
  }
 
- // 表单的双向数据绑定 
+ // 表单的双向数据绑定
  function model(that, e) {
  	let item = e.currentTarget.dataset.item;
  	that.setData({
@@ -346,7 +346,7 @@
  	});
  }
 
- // 无提示成功，返回 
+ // 无提示成功，返回
  function showNoneToastReturn(title = '操作完成', duration = 2000) {
  	let callback = function () {
  		wx.navigateBack({
@@ -440,7 +440,7 @@
  		});
  }
 
- // 二次确认操作 
+ // 二次确认操作
  function showConfirm(title = '确定要删除吗？', yes, no) {
  	return wx.showModal({
  		title: '',
@@ -471,8 +471,8 @@
 
  /**
   * 页面赋值
-  * @param {*} that 
-  * @param {*} data 
+  * @param {*} that
+  * @param {*} data
   */
  function setPageData(that, data) {
  	// 删除页面保留数据
@@ -483,7 +483,7 @@
  }
  /**
   * 配合搜索列表响应监听
-  * @param {*} that 
+  * @param {*} that
   */
  function commListListener(that, e) {
  	if (helper.isDefined(e.detail.search))
@@ -518,7 +518,7 @@
 
  /**
   * 控制回页首按钮
-  * @param {*} e 
+  * @param {*} e
   */
  function showTopBtn(e, that) {
  	if (e.scrollTop > 100) {
@@ -560,7 +560,7 @@
  	});
  }
 
- // 页面跳转/图片预览 
+ // 页面跳转/图片预览
  function url(e, that) {
  	let url = e.currentTarget.dataset.url;
  	let type = e.currentTarget.dataset.type;
@@ -677,7 +677,7 @@
  		case 'saveimg':
  		case 'saveimage': {
  			let callback = function () {
- 				wx.saveImageToPhotosAlbum({ //成功之后保存到本地 
+ 				wx.saveImageToPhotosAlbum({ //成功之后保存到本地
  					filePath: url, //生成的图片的本地路径
  					success: function (res) {
  						wx.showToast({
@@ -695,7 +695,7 @@
  			picHelper.getWritePhotosAlbum(callback);
  			break;
  		}
- 		case 'bool': //正反 
+ 		case 'bool': //正反
  		{
  			that.setData({
  				[url]: !that.data[url]
@@ -812,7 +812,7 @@
 
  /**
   * 多条件复合查询条件
-  * @param {*} e 
+  * @param {*} e
   * @param {*} key 查询键值
   * @param {*} val  查询值
   * @param {*} def  键值的数据类型(int,str,float)
@@ -840,8 +840,8 @@
 
  /**
   * 页面缓存
-  * @param {*} key  
-  * @param {*} that 
+  * @param {*} key
+  * @param {*} that
   * @param {*} listKey  数据项KEY
   */
  function cacheListExist(key, that, listKey = 'list') {
@@ -876,7 +876,7 @@
  	formHint,
  	formSetBarTitleByAddEdit,
 
- 	//### 
+ 	//###
  	dataset, //节点数据data-
 
  	//### 节点操作
@@ -921,7 +921,7 @@
 
  	top, // 回顶部事件
  	url, // 跳转事件
- 	anchor, //锚点跳转事件  
+ 	anchor, //锚点跳转事件
 
  	toURL, //跳转操作
 

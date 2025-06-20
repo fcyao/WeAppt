@@ -146,7 +146,7 @@ Page({
 		try {
 			// 先创建，再上传
 			let result = await cloudHelper.callCloudSumbit('admin/meet_insert', data);
-			let meetId = result.data.id;
+			let meetId = result.data;
 
 			let formContent = this.data.formContent;
 			if (formContent && formContent.length > 0) {

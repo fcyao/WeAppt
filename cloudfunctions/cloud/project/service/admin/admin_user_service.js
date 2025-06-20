@@ -1,7 +1,7 @@
 /**
  * Notes: 用户管理
  * Ver : CCMiniCloud Framework 2.0.1 ALL RIGHTS RESERVED BY cclinux@qq.com
- * Date: 2022-01-22y 07:48:00 
+ * Date: 2022-01-22y 07:48:00
  */
 
 const BaseAdminService = require('./base_admin_service.js');
@@ -31,7 +31,7 @@ class AdminUserService extends BaseAdminService {
 		sortType, // 搜索菜单
 		sortVal, // 搜索菜单
 		orderBy, // 排序
-		whereEx, //附加查询条件 
+		whereEx, //附加查询条件
 		page,
 		size,
 		oldTotal = 0
@@ -67,7 +67,7 @@ class AdminUserService extends BaseAdminService {
 					where.and.USER_STATUS = Number(sortVal);
 					break;
 				case 'companyDef':
-					// 单位性质 
+					// 单位性质
 					where.and.USER_COMPANY_DEF = (sortVal);
 					break;
 
@@ -97,7 +97,10 @@ class AdminUserService extends BaseAdminService {
 
 	/**删除用户 */
 	async delUser(id) {
-		this.AppError('此功能暂不开放，如有需要请加作者微信：cclinux0730');
+		let where = {
+			_id: id
+		};
+		return await UserModel.del(where);
 	}
 
 }
