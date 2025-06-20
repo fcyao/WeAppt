@@ -39,7 +39,10 @@ class AdminNewsService extends BaseAdminService {
 
 	/**删除资讯数据 */
 	async delNews(id) {
-		this.AppError('此功能暂不开放，如有需要请加作者微信：cclinux0730');
+		let where = {
+			_id: id
+		}
+		return NewsModel.del(where);
 	}
 
 	/**获取资讯信息 */
@@ -176,12 +179,22 @@ class AdminNewsService extends BaseAdminService {
 
 	/**修改资讯状态 */
 	async statusNews(id, status) {
-		this.AppError('此功能暂不开放，如有需要请加作者微信：cclinux0730');
+		let where = {
+			_id: id
+		}
+		return NewsModel.edit(where, {
+			NEWS_STATUS: status
+		});
 	}
 
 	/**资讯置顶排序设定 */
 	async sortNews(id, sort) {
-		this.AppError('此功能暂不开放，如有需要请加作者微信：cclinux0730');
+		let where = {
+			_id: id
+		}
+		return NewsModel.edit(where, {
+			NEWS_ORDER: sort
+		});
 	}
 }
 
